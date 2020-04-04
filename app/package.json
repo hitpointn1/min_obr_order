@@ -1,0 +1,9 @@
+{
+  "android": {
+    "v8Flags": "--expose_gc",
+    "markingMode": "none"
+  },
+  "main": "main",
+  "name": "min_obr_order",
+  "version": "1.0.0"
+}
