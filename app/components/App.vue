@@ -28,48 +28,23 @@
     </Page>
 </template>
 
-<script >
+<script>
+  import { mapState } from 'vuex';
+
   export default {
+    created: function() {
+        this.$store.dispatch('GetEducationPlaces');
+    },
+    computed: {
+      higherEducationPlaces() {
+        return this.$store.getters.GetEducationPlaces;
+      }
+    },
     data() {
       return {
-        higherEducationPlaces: [{
-            Id: 0,
-            name: 'ВГУ',
-            faculties: [{
-                name: 'ПММ',
-                Exams: [{
-                        name: 'Математика',
-                        examMark: 70
-                    }, {
-                        name: 'Русский',
-                        examMark: 70,
-                    }, {
-                        name: 'Информатика',
-                        examMark: 70,
-                    }
-                ]
-            }]
-        }, {
-            Id: 1,
-            name: 'ВГАСУ',
-            faculties: [{
-                name: 'Строительный',
-                Exams: [{
-                        name: 'Математика',
-                        examMark: 70
-                    }, {
-                        name: 'Русский',
-                        examMark: 70,
-                    }, {
-                        name: 'Физика',
-                        examMark: 70,
-                    }
-                ]
-            }]
-        }],
         msg: 'Здесь должны быть представления!'
       }
-    }
+    },
   }
 </script>
 

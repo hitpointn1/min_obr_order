@@ -1,6 +1,11 @@
-export default class APIFactory {
-    EducationalPlacesProvider;
-    AbiturientsProvider;
-}
+import AbiturientsProvider from './Providers/AbiturientsProvider';
+import EducationPlacesProvider from './Providers/EducationPlacesProvider';
+import AuthenticationProvider from './Providers/AuthenticationProvider';
 
-export default ProvidersFactory = new APIFactory();
+const ProvidersFactory = {
+  AbiturientsProvider,
+  EducationPlacesProvider,
+  AuthenticationProvider,
+};
+
+export default ProvidersFactory;

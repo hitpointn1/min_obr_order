@@ -1,49 +1,93 @@
-import Vue from 'vue';
+import Vue from 'nativescript-vue';
 import Vuex from 'vuex';
-import { ProvidersFactory } from './BL/APIFactory';
+import ProvidersFactory from './BL/APIFactory';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     higherEducationPlaces: [],
-    currentUser: null
+    currentUser: null,
+    error: null,
+    isLoggedIn: false,
   },
 
   getters: {
-    GetUser() {
-
+    GetUser: (state, getters) => {
+      return state.currentUser;
     },
-    GetEducationPlaces() {
 
-    }
+    GetEducationPlaces: (state, getters) => {
+      return state.higherEducationPlaces;
+    },
   },
 
   mutations: {
-    SetEducationPlaces() {
-
+    SetLoggedIn(state) {
+      state.isLoggedIn = true;
     },
-    SetUser() {
 
-    }
+    SetLogOut(state) {
+      state.isLoggedIn = false;
+    },
+
+    SetEducationPlaces(state, placesData) {
+      state.higherEducationPlaces = placesData;
+    },
+
+    SetUser(state, userData) {
+      state.currentUser = userData;
+    },
+
+    SetError(state, errorData) {
+      state.error = errorData;
+    },
   },
 
   actions: {
-    GetEducationPlaces() {
-      ProvidersFactory.GetEducationPlaces();
-      this.commit('SetEducationPlaces');
+    SignIn(context, signInData) {
+
     },
-    AddEducationPlace(educationPlaceInfo) {
-      ProvidersFactory.AddEducationPlace();
-      this.commit('SetEducationPlaces', educationPlaceInfo);
+
+    LogIn(context, login, password) {
+
     },
-    GetUser() {
-      ProvidersFactory.GetUser();
-      this.commit('SetUser');
+
+    GetEducationPlaces(context) {
+      ProvidersFactory.EducationPlacesProvider
+        .GetEducationPlaces().then((successRes) => {
+          context.commit('SetEducationPlaces', successRes);
+        }, (rejectRes) => {
+          context.commit('SetError', rejectRes);
+        });
     },
-    AddNewUser() {
-      ProvidersFactory.AddNewUser();
-      this.commit('SetUser');
-    }
-  }
+
+    AddEducationPlace(context, educationPlaceInfo) {
+      ProvidersFactory.EducationPlacesProvider
+        .AddEducationPlace(educationPlaceInfo).then((successRes) => {
+          context.commit('SetEducationPlaces', successRes);
+        }, (rejectRes) => {
+          context.commit('SetError', rejectRes);
+        });
+    },
+
+    GetUser(context, abiturientID) {
+      ProvidersFactory.AbiturientsProvider
+        .GetAbiturient(abiturientID).then((successRes) => {
+          context.commit('SetUser', successRes);
+          context.commit('SetLoggedIn');
+        }, (rejectRes) => {
+          context.commit('SetError', rejectRes);
+        });
+    },
+
+    AddNewUser(context, newUserData) {
+      ProvidersFactory.AbiturientsProvider
+        .AddAbiturient(newUserData).then((successRes) => {
+          context.commit('SetUser', successRes);
+        }, (rejectRes) => {
+          context.commit('SetError', rejectRes);
+        });
+    },
+  },
 });
