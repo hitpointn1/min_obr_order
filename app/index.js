@@ -1,9 +1,9 @@
-import EducationPlacesList from './components/EducationPlacesList'
-import PersonalProfile from './components/PersonalProfile'
+import EducationPlacesList from './components/EducationPlacesList';
+import PersonalProfile from './components/PersonalProfile';
 
 const router = {
-   EducationPlacesList: EducationPlacesList,
-   PersonalProfile: PersonalProfile
-}
+  EducationPlacesList,
+  PersonalProfile,
+};
 
 export default router;
