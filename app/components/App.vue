@@ -16,18 +16,23 @@
             </StackLayout>
 
             <Frame ~mainContent>
-                <slot name="mainContent"></slot>
+                <EducationPlacesList />
             </Frame>
         </RadSideDrawer>
     </Page>
 </template>
 
 <script>
+import EducationPlacesList from './EducationPlacesList';
+
 export default {
   methods: {
     closeDrawer() {
       this.$refs.drawer.nativeView.closeDrawer();
     },
+  },
+  components: {
+    EducationPlacesList,
   },
 };
 </script>
