@@ -1,11 +1,11 @@
 import EducationPlaces from './components/EducationPlaces'
 import EducationPlacesList from './components/EducationPlacesList'
 import PersonalProfile from './components/PersonalProfile'
-import App from './components/App'
 
 const router = {
    EducationPlacesList: EducationPlacesList,
-   App: App
+   EducationPlaces: EducationPlaces,
+   PersonalProfile: PersonalProfile
 }
 
 export default router;

@@ -26,5 +26,7 @@ Vue.registerElement(
 
 new Vue({
   store,
-  render: h => h('frame', [h(router['App'])])
+  render(h) {
+    return h('frame', [h(App), h(router.EducationPlacesList, { slot: 'mainContent' })])
+  }
 }).$start()

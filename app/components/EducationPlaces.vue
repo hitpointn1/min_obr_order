@@ -1,11 +1,13 @@
 <template>
-    <ListView for="item in higherEducationPlaces" style="height:1250px">
-        <v-template>
-            <FlexboxLayout flexDirection="row">
-                    <Label :text="item.name" class="message" style="width: 60%" />
-            </FlexboxLayout>
-        </v-template>
-    </ListView>
+    <StackLayout  columns="*" rows="*">
+        <ListView for="item in higherEducationPlaces" style="height:1250px">
+            <v-template>
+                <FlexboxLayout flexDirection="row">
+                        <Label :text="item.name" class="message" style="width: 60%" />
+                </FlexboxLayout>
+            </v-template>
+        </ListView>
+    </StackLayout>
 </template>
 
 <script>

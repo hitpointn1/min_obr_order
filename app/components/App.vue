@@ -10,44 +10,21 @@
         <RadSideDrawer ref="drawer">
             <StackLayout ~drawerContent backgroundColor="#ffffff">
                 <Label class="drawer-header" text="Информация для абитуриента"/>
-                <Label class="drawer-item" text="Личный кабинет" />
+                <Label class="drawer-item" text="Личный кабинет" @tap="$goto('PersonalProfile')"/>
                 <Label class="drawer-item" text="Список ВУЗов" @tap="$goto('EducationPlacesList')"/>
                 <Label class="drawer-item" text="Закрыть" @tap="$refs.drawer.nativeView.closeDrawer()"/>
             </StackLayout>
                 
-            <StackLayout ~mainContent columns="*" rows="*">
-                <EducationPlaces />
-            </StackLayout>
+            <Frame ~mainContent>
+                <slot name="mainContent"></slot>
+            </Frame>
         </RadSideDrawer>
     </Page>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-  import Vue from 'nativescript-vue'
-  import EducationPlaces from './EducationPlaces'
-
-  export default {
-    data() {
-      return {
-      }
-    },
-    mounted() {
-        Vue.prototype.$CurrentFrame = {
-            frame: this.$refs.CurrentFrame,
-        };
-    },
-    methods: {
-        Navigate: function (component) {
-            this.$navigateTo(component, {
-                frame: Vue.prototype.$CurrentFrame.frame,
-            });
-        }
-    },
-    components: {
-        EducationPlaces
-    }
-  }
+export default {
+}
 </script>
 
 <style scoped>

@@ -1,10 +1,8 @@
 <template>
-  <Page>
-      <ActionBar title="Список ВУЗов" />
-      <StackLayout>
-          <EducationPlaces />
-      </StackLayout>
-  </Page>
+    <Page>
+        <ActionBar title='Список ВУЗов' />
+        <EducationPlaces />
+    </Page>
 </template>
 
 <script>
