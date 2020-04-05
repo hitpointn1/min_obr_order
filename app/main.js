@@ -1,24 +1,28 @@
-import Vue from 'nativescript-vue'
-import App from './components/App'
+/* eslint-disable no-undef */
+import Vue from 'nativescript-vue';
+import router from './index';
+import store from './store';
+import App from './components/App';
 
-import store from './store'
-import VueDevtools from 'nativescript-vue-devtools'
-
-if(TNS_ENV !== 'production') {
-  Vue.use(VueDevtools)
-}
-  
 // Prints Vue logs when --env.production is *NOT* set while building
-Vue.config.silent = (TNS_ENV === 'production')
+Vue.config.silent = (TNS_ENV === 'production');
 // Prints Colored logs when --env.production is *NOT* set while building
-Vue.config.debug = (TNS_ENV !== 'production')
+Vue.config.debug = (TNS_ENV !== 'production');
+
+Vue.prototype.$router = router;
+
+// eslint-disable-next-line func-names
+Vue.prototype.$goto = function (to, options) {
+  this.$navigateTo(this.$router[to], options);
+};
 
 Vue.registerElement(
   'RadSideDrawer',
-  () => require('nativescript-ui-sidedrawer').RadSideDrawer
-)
+  // eslint-disable-next-line global-require
+  () => require('nativescript-ui-sidedrawer').RadSideDrawer,
+);
 
 new Vue({
   store,
-  render: h => h('frame', [h(App)])
-}).$start()
+  render: (h) => h('frame', [h(router.EducationPlacesList, { slot: 'mainContent' }), h(App)]),
+}).$start();

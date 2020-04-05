@@ -2,7 +2,7 @@
     <Page>
         <ActionBar>
             <GridLayout width="100%" columns="auto, *">
-                <Label text="MENU" @tap="$refs.drawer.nativeView.showDrawer()" col="0"/>
+                <Label text="MENU" @tap="$refs.drawer.nativeView.toggleDrawerState()" col="0"/>
                 <Label class="title" text="Поступай правильно!" col="1"/>
             </GridLayout>
         </ActionBar>
@@ -10,42 +10,31 @@
         <RadSideDrawer ref="drawer">
             <StackLayout ~drawerContent backgroundColor="#ffffff">
                 <Label class="drawer-header" text="Информация для абитуриента"/>
-
-                <Label class="drawer-item" text="Личный кабинет"/>
-                <Label class="drawer-item" text="Список ВУЗов"/>
+                <Label class="drawer-item" text="Личный кабинет" @tap="$goto('PersonalProfile')"/>
+                <Label class="drawer-item" text="Список ВУЗов" @tap="$goto('EducationPlacesList')"/>
+                <Label class="drawer-item" text="Закрыть" @tap="closeDrawer()"/>
             </StackLayout>
 
-            <StackLayout ~mainContent columns="*" rows="*">
-                <ListView for="item in higherEducationPlaces" style="height:1250px">
-                    <v-template>
-                        <FlexboxLayout flexDirection="row">
-                             <Label :text="item.name" class="message" style="width: 60%" />
-                        </FlexboxLayout>
-                    </v-template>
-                </ListView>
-            </StackLayout>
+            <Frame ~mainContent>
+                <EducationPlacesList />
+            </Frame>
         </RadSideDrawer>
     </Page>
 </template>
 
 <script>
-  import { mapState } from 'vuex';
+import EducationPlacesList from './EducationPlacesList';
 
-  export default {
-    created: function() {
-        this.$store.dispatch('GetEducationPlaces');
+export default {
+  methods: {
+    closeDrawer() {
+      this.$refs.drawer.nativeView.closeDrawer();
     },
-    computed: {
-      higherEducationPlaces() {
-        return this.$store.getters.GetEducationPlaces;
-      }
-    },
-    data() {
-      return {
-        msg: 'Здесь должны быть представления!'
-      }
-    },
-  }
+  },
+  components: {
+    EducationPlacesList,
+  },
+};
 </script>
 
 <style scoped>
@@ -57,13 +46,6 @@
     .title {
         text-align: left;
         padding-left: 16;
-    }
-
-    .message {
-        vertical-align: center;
-        text-align: left;
-        font-size: 16;
-        color: #333333;
     }
 
     .drawer-header {
