@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
 import Vue from 'nativescript-vue';
 import Vuex from 'vuex';
 import ProvidersFactory from './BL/APIFactory';
@@ -13,13 +15,9 @@ export default new Vuex.Store({
   },
 
   getters: {
-    GetUser: (state, getters) => {
-      return state.currentUser;
-    },
+    GetUser: (state, getters) => state.currentUser,
 
-    GetEducationPlaces: (state, getters) => {
-      return state.higherEducationPlaces;
-    },
+    GetEducationPlaces: (state, getters) => state.higherEducationPlaces,
   },
 
   mutations: {

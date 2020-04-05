@@ -1,5 +1,5 @@
 <template>
-    <StackLayout  columns="*" rows="*">
+    <StackLayout columns="*" rows="*">
         <ListView for="item in higherEducationPlaces" style="height:1250px">
             <v-template>
                 <FlexboxLayout flexDirection="row">
@@ -12,15 +12,15 @@
 
 <script>
 export default {
-    created: function() {
-        this.$store.dispatch('GetEducationPlaces');
+  created() {
+    this.$store.dispatch('GetEducationPlaces');
+  },
+  computed: {
+    higherEducationPlaces() {
+      return this.$store.getters.GetEducationPlaces;
     },
-    computed: {
-      higherEducationPlaces() {
-        return this.$store.getters.GetEducationPlaces;
-      }
-    },
-}
+  },
+};
 </script>
 
 <style>

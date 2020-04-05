@@ -12,9 +12,9 @@
                 <Label class="drawer-header" text="Информация для абитуриента"/>
                 <Label class="drawer-item" text="Личный кабинет" @tap="$goto('PersonalProfile')"/>
                 <Label class="drawer-item" text="Список ВУЗов" @tap="$goto('EducationPlacesList')"/>
-                <Label class="drawer-item" text="Закрыть" @tap="$refs.drawer.nativeView.closeDrawer()"/>
+                <Label class="drawer-item" text="Закрыть" @tap="closeDrawer()"/>
             </StackLayout>
-                
+
             <Frame ~mainContent>
                 <slot name="mainContent"></slot>
             </Frame>
@@ -24,7 +24,12 @@
 
 <script>
 export default {
-}
+  methods: {
+    closeDrawer() {
+      this.$refs.drawer.nativeView.closeDrawer();
+    },
+  },
+};
 </script>
 
 <style scoped>

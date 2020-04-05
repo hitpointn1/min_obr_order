@@ -1,10 +1,8 @@
-import RequestManager from "../WebUtils/RequestManager";
+import RequestManager from '../WebUtils/RequestManager';
 
 const GetEducationPlaces = () => new Promise((resolve, reject) => {
   RequestManager.EducationPlacesRequest('GET')
-    .then((res) => {
-      return resolve(res.data.higherEducationPlaces)
-    }, (rejRes) => reject(rejRes));
+    .then((res) => resolve(res.data.higherEducationPlaces), (rejRes) => reject(rejRes));
 });
 
 const AddEducationPlace = (educationPlaceInfo) => new Promise((resolve, reject) => {

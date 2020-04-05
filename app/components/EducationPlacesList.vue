@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import EducationPlaces from './EducationPlaces'
+import EducationPlaces from './EducationPlaces';
 
 export default {
-    components: {
-        EducationPlaces
-    }
-}
+  components: {
+    EducationPlaces,
+  },
+};
 </script>
 
 <style>
