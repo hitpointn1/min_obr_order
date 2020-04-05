@@ -1,13 +1,8 @@
 /* eslint-disable no-undef */
 import Vue from 'nativescript-vue';
-import VueDevtools from 'nativescript-vue-devtools';
 import router from './index';
 import store from './store';
 import App from './components/App';
-
-if (TNS_ENV !== 'production') {
-  Vue.use(VueDevtools);
-}
 
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production');
@@ -29,5 +24,5 @@ Vue.registerElement(
 
 new Vue({
   store,
-  render: (h) => h('frame', [h(App)]),
+  render: (h) => h('frame', [h(router.EducationPlacesList, { slot: 'mainContent' }), h(App)]),
 }).$start();
