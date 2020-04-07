@@ -10,8 +10,8 @@
         <RadSideDrawer ref="drawer">
             <StackLayout ~drawerContent backgroundColor="#ffffff">
                 <Label class="drawer-header" text="Информация для абитуриента"/>
-                <Label class="drawer-item" text="Личный кабинет" @tap="$goto('PersonalProfile')"/>
-                <Label class="drawer-item" text="Список ВУЗов" @tap="$goto('EducationPlacesList')"/>
+                <Label class="drawer-item" text="Личный кабинет" @tap="navigateTo('PersonalProfile')"/>
+                <Label class="drawer-item" text="Список ВУЗов" @tap="navigateTo('EducationPlacesList')"/>
                 <Label class="drawer-item" text="Закрыть" @tap="closeDrawer()"/>
             </StackLayout>
 
@@ -29,6 +29,10 @@ export default {
   methods: {
     closeDrawer() {
       this.$refs.drawer.nativeView.closeDrawer();
+    },
+    navigateTo(route) {
+      this.$goto(route);
+      this.closeDrawer();
     },
   },
   components: {
