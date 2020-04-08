@@ -10,9 +10,13 @@
         <RadSideDrawer ref="drawer">
             <StackLayout ~drawerContent backgroundColor="#ffffff">
                 <Label class="drawer-header" text="Информация для абитуриента"/>
-                <Label class="drawer-item" text="Личный кабинет" @tap="navigateTo('PersonalProfile')"/>
-                <Label class="drawer-item" text="Список ВУЗов" @tap="navigateTo('EducationPlacesList')"/>
-                <Label class="drawer-item" text="Закрыть" @tap="closeDrawer()"/>
+
+                <Label class="drawer-item" text="Личный кабинет"
+                    @tap="navigateTo('PersonalProfile')"/>
+                <Label class="drawer-item" text="Список ВУЗов"
+                    @tap="navigateTo('EducationPlacesList')"/>
+                <Label class="drawer-item" text="Закрыть"
+                    @tap="closeDrawer()"/>
             </StackLayout>
 
             <Frame ~mainContent>

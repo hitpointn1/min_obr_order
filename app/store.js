@@ -15,6 +15,8 @@ export default new Vuex.Store({
   },
 
   getters: {
+    IsLoggedIn: (state, getters) => state.isLoggedIn,
+
     GetUser: (state, getters) => state.currentUser,
 
     GetEducationPlaces: (state, getters) => state.higherEducationPlaces,
