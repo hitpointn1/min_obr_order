@@ -1,7 +1,7 @@
 <template>
   <Page>
-     <ActionBar title="Регистрация" />
-     <Label text="рег"/>
+    <ActionBar title="Регистрация" />
+    <Label text="рег"/>
   </Page>
 </template>
 
