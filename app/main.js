@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import Vue from 'nativescript-vue';
-import router from './index';
+import router from './router';
 import store from './store';
 import App from './components/App';
 
