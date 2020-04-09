@@ -5,7 +5,7 @@
       <ListView for="item in higherEducationPlaces" style="height:1250px">
         <v-template>
           <FlexboxLayout flexDirection="row">
-            <Label :text="item.name" class="message" style="width: 60%" />
+            <Label :text="item.name" class="message" style="width: 60%" @tap="$goto('Faculties')" />
           </FlexboxLayout>
         </v-template>
       </ListView>
