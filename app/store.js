@@ -18,6 +18,8 @@ export default new Vuex.Store({
     GetUser: (state, getters) => state.currentUser,
 
     GetEducationPlaces: (state, getters) => state.higherEducationPlaces,
+
+    GetFirstPlace: (state, getters) => state.higherEducationPlaces[0],
   },
 
   mutations: {

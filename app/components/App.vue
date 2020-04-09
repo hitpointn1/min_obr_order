@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
     ActionBar {
-        background-color: blueviolet;
+        background-color: rgb(0, 4, 255);
         color: #ffffff;
     }
 
@@ -55,7 +55,7 @@ export default {
     .drawer-header {
         padding: 50 16 16 16;
         margin-bottom: 16;
-        background-color: blueviolet;
+        background-color: rgb(0, 4, 255);
         color: #ffffff;
         font-size: 16;
     }
