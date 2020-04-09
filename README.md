@@ -2,6 +2,18 @@
 
 > A native application built with NativeScript-Vue
 
+### Личный кабинет
+![Личный кабинет](/dist/startPage.png)
+
+### Выпадающее меню
+![Выпадающее меню](/dist/sideDrawer.png)
+
+### Страница входа
+![Страница входа](/dist/loginPage.png)
+
+### Список вузов
+![Список вузов](/dist/educationPlacesList.png)
+
 ## Usage
 
 ``` bash

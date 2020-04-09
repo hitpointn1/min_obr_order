@@ -1,25 +1,29 @@
 <template>
-    <Page>
-        <ActionBar>
-            <GridLayout width="100%" columns="auto, *">
-                <Label text="MENU" @tap="$refs.drawer.nativeView.toggleDrawerState()" col="0"/>
-                <Label class="title" text="Поступай правильно!" col="1"/>
-            </GridLayout>
-        </ActionBar>
+  <Page>
+    <ActionBar>
+      <GridLayout width="100%" columns="auto, *">
+        <Label text="MENU" @tap="$refs.drawer.nativeView.toggleDrawerState()" col="0"/>
+        <Label class="title" text="Поступай правильно!" col="1"/>
+      </GridLayout>
+    </ActionBar>
 
-        <RadSideDrawer ref="drawer">
-            <StackLayout ~drawerContent backgroundColor="#ffffff">
-                <Label class="drawer-header" text="Информация для абитуриента"/>
-                <Label class="drawer-item" text="Личный кабинет" @tap="$goto('PersonalProfile')"/>
-                <Label class="drawer-item" text="Список ВУЗов" @tap="$goto('EducationPlacesList')"/>
-                <Label class="drawer-item" text="Закрыть" @tap="closeDrawer()"/>
-            </StackLayout>
+    <RadSideDrawer ref="drawer">
+      <StackLayout ~drawerContent backgroundColor="#ffffff">
+        <Label class="drawer-header" text="Информация для абитуриента"/>
 
-            <Frame ~mainContent>
-                <EducationPlacesList />
-            </Frame>
-        </RadSideDrawer>
-    </Page>
+        <Label class="drawer-item" text="Личный кабинет"
+            @tap="navigateTo('PersonalProfile')"/>
+        <Label class="drawer-item" text="Список ВУЗов"
+            @tap="navigateTo('EducationPlacesList')"/>
+        <Label class="drawer-item" text="Закрыть"
+            @tap="closeDrawer()"/>
+      </StackLayout>
+
+      <Frame ~mainContent>
+        <EducationPlacesList />
+      </Frame>
+    </RadSideDrawer>
+  </Page>
 </template>
 
 <script>
@@ -30,6 +34,10 @@ export default {
     closeDrawer() {
       this.$refs.drawer.nativeView.closeDrawer();
     },
+    navigateTo(route) {
+      this.$goto(route);
+      this.closeDrawer();
+    },
   },
   components: {
     EducationPlacesList,
@@ -39,7 +47,7 @@ export default {
 
 <style scoped>
     ActionBar {
-        background-color: blueviolet;
+        background-color: rgb(0, 4, 255);
         color: #ffffff;
     }
 
@@ -51,7 +59,7 @@ export default {
     .drawer-header {
         padding: 50 16 16 16;
         margin-bottom: 16;
-        background-color: blueviolet;
+        background-color: rgb(0, 4, 255);
         color: #ffffff;
         font-size: 16;
     }

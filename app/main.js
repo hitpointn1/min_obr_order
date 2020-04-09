@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import Vue from 'nativescript-vue';
-import router from './index';
+import router from './router';
 import store from './store';
 import App from './components/App';
 
@@ -24,5 +24,5 @@ Vue.registerElement(
 
 new Vue({
   store,
-  render: (h) => h('frame', [h(router.EducationPlacesList, { slot: 'mainContent' }), h(App)]),
+  render: (h) => h('frame', [h(App)]),
 }).$start();
