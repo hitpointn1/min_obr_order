@@ -1,25 +1,29 @@
 <template>
-    <Page>
-        <ActionBar>
-            <GridLayout width="100%" columns="auto, *">
-                <Label text="MENU" @tap="$refs.drawer.nativeView.toggleDrawerState()" col="0"/>
-                <Label class="title" text="Поступай правильно!" col="1"/>
-            </GridLayout>
-        </ActionBar>
+  <Page>
+    <ActionBar>
+      <GridLayout width="100%" columns="auto, *">
+        <Label text="MENU" @tap="$refs.drawer.nativeView.toggleDrawerState()" col="0"/>
+        <Label class="title" text="Поступай правильно!" col="1"/>
+      </GridLayout>
+    </ActionBar>
 
-        <RadSideDrawer ref="drawer">
-            <StackLayout ~drawerContent backgroundColor="#ffffff">
-                <Label class="drawer-header" text="Информация для абитуриента"/>
-                <Label class="drawer-item" text="Личный кабинет" @tap="navigateTo('PersonalProfile')"/>
-                <Label class="drawer-item" text="Список ВУЗов" @tap="navigateTo('EducationPlacesList')"/>
-                <Label class="drawer-item" text="Закрыть" @tap="closeDrawer()"/>
-            </StackLayout>
+    <RadSideDrawer ref="drawer">
+      <StackLayout ~drawerContent backgroundColor="#ffffff">
+        <Label class="drawer-header" text="Информация для абитуриента"/>
 
-            <Frame ~mainContent>
-                <EducationPlacesList />
-            </Frame>
-        </RadSideDrawer>
-    </Page>
+        <Label class="drawer-item" text="Личный кабинет"
+            @tap="navigateTo('PersonalProfile')"/>
+        <Label class="drawer-item" text="Список ВУЗов"
+            @tap="navigateTo('EducationPlacesList')"/>
+        <Label class="drawer-item" text="Закрыть"
+            @tap="closeDrawer()"/>
+      </StackLayout>
+
+      <Frame ~mainContent>
+        <EducationPlacesList />
+      </Frame>
+    </RadSideDrawer>
+  </Page>
 </template>
 
 <script>
